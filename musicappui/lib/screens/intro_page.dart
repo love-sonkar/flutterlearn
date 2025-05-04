@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicappui/screens/home_page.dart';
+import 'package:musicappui/utils/chip.dart';
 import 'package:musicappui/utils/colors.dart';
 
 class IntroPage extends StatelessWidget {
@@ -41,35 +42,7 @@ class IntroPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 70,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 0, 0, 1),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 3.0,
-                          horizontal: 10,
-                        ),
-                        child: Row(
-                          spacing: 4,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 10,
-                              width: 10,
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 155, 26, 26),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
-                            Text('Live', style: TextStyle(color: Colors.white)),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LabelChip(isLive: true, isCards: false),
 
                     Text(
                       "Music Without Borders",
@@ -86,11 +59,15 @@ class IntroPage extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                        );
-                      },
+                      onTap:
+                          () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            ),
+                          },
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 10,

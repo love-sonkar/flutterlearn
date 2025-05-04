@@ -7,40 +7,43 @@ class TopPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(profileImg),
-              fit: BoxFit.cover,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(profileImg),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(10),
             ),
-            borderRadius: BorderRadius.circular(10),
           ),
-        ),
-        Spacer(),
-        Container(
-          height: 50,
-          width: 45,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(width: 1),
+          Spacer(),
+          Container(
+            height: 50,
+            width: 45,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 1),
+            ),
+            child: Icon(CupertinoIcons.search),
           ),
-          child: Icon(CupertinoIcons.search),
-        ),
-        SizedBox(width: 20),
-        Container(
-          height: 50,
-          width: 45,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(width: 1),
+          SizedBox(width: 20),
+          Container(
+            height: 50,
+            width: 45,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 1),
+            ),
+            child: Icon(CupertinoIcons.bell),
           ),
-          child: Icon(CupertinoIcons.bell),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
