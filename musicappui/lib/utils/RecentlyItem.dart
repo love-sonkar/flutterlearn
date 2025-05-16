@@ -23,9 +23,12 @@ class _RecentlyItemState extends State<RecentlyItem> {
               borderRadius: BorderRadius.circular(15),
               border: Border.all(width: 2, color: MyColors.primaryBlack),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(widget.itemMap["image"], fit: BoxFit.cover),
+            child: Hero(
+              tag: "recentlyImg",
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(widget.itemMap["image"], fit: BoxFit.cover),
+              ),
             ),
           ),
           SizedBox(width: 10),

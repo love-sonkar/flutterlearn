@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:musicappui/screens/details_page.dart';
+import 'package:musicappui/screens/home_page.dart';
 import 'package:musicappui/utils/chip.dart';
 import 'package:musicappui/utils/colors.dart';
 import 'package:musicappui/utils/hero_section_tabs.dart';
@@ -229,7 +231,6 @@ class _HeroSectionState extends State<HeroSection> {
                   index: index,
                   changeIndex: (index) => changeIndex(index),
                 );
-                // cards
               },
             ),
           ),
@@ -263,83 +264,90 @@ class _HeroSectionState extends State<HeroSection> {
               scrollDirection: Axis.horizontal,
               itemCount: musicList.length,
               itemBuilder: (context, index) {
-                return Container(
-                  height: 200,
-                  width: 220,
-                  margin: EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: MyColors.primaryBlack),
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: NetworkImage(image2),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0, top: 5),
-                        child: LabelChip(
-                          isLive: musicList[index]["isLive"],
-                          isCards: true,
+                return Hero(
+                  tag: "cardsImg",
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailsPage()),
+                      );
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 220,
+                      margin: EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: MyColors.primaryBlack,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(image2),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      Spacer(),
-                      Container(
-                        height: 70,
-                        width: double.infinity,
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: MyColors.primaryBlack,
-                          // gradient: LinearGradient(
-                          //   begin: Alignment.topCenter,
-                          //   end: Alignment.bottomCenter,
-                          //   colors: [
-                          //     const Color.fromARGB(0, 0, 0, 0),
-                          //     const Color.fromARGB(189, 0, 0, 0),
-                          //     MyColors.primaryBlack,
-                          //   ],
-                          // ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(9),
-                            bottomRight: Radius.circular(9),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0, top: 5),
+                            child: LabelChip(
+                              isLive: musicList[index]["isLive"],
+                              isCards: true,
+                            ),
                           ),
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          Spacer(),
+                          Container(
+                            height: 70,
+                            width: double.infinity,
+                            padding: EdgeInsets.all(10),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: MyColors.primaryBlack,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(9),
+                                bottomRight: Radius.circular(9),
+                              ),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  musicList[index]["name"],
-                                  style: TextStyle(
-                                    color: MyColors.lightGray,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      musicList[index]["name"],
+                                      style: TextStyle(
+                                        color: MyColors.lightGray,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      musicList[index]["desc"],
+                                      style: TextStyle(
+                                        color: MyColors.lightGray,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  musicList[index]["desc"],
-                                  style: TextStyle(color: MyColors.lightGray),
+                                Spacer(),
+                                Transform.rotate(
+                                  angle: 0.785398,
+                                  child: Icon(
+                                    Icons.arrow_right_alt_sharp,
+                                    size: 35,
+                                    color: MyColors.lightGray,
+                                  ),
                                 ),
                               ],
                             ),
-                            Spacer(),
-                            Transform.rotate(
-                              angle: 0.785398,
-                              child: Icon(
-                                Icons.arrow_right_alt_sharp,
-                                size: 35,
-                                color: MyColors.lightGray,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 );
               },
